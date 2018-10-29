@@ -7,11 +7,18 @@ In this project we will become familiar with:
 3. Express
 4. Postman
 
-Confirm you have Mongo DB installed
-Here is a link
-[Here is a link](https://docs.mongodb.com/manual/installation/)
+#### Before we start.
+Download Postman
+[Download Postman Link](https://www.getpostman.com/apps)
 
-Mongo is available on Linux, MacOS, and Windows.
+Confirm you have Mongo DB installed
+[MongoDB Download Link](https://docs.mongodb.com/manual/installation/)
+
+Have Express installed
+[Express Download Link](https://expressjs.com/en/starter/installing.html)
+
+Most importantly, we need Nodejs
+[NodeJS Download Link](https://nodejs.org/en/)
 
 If you have completed projects in the past with MongoDb, but are unsure it is installed run the following command.
 
@@ -20,12 +27,11 @@ If you have completed projects in the past with MongoDb, but are unsure it is in
 Or to check globally,
 
 `npm list -g  mongoose`
-
+---
 First let us set up the project folder structure.
 
 ### Project tree
 
-.
  * [project3](./tree-md)
  * [models](./models)
    * [activity.js](./models/activity.js)
@@ -78,7 +84,7 @@ const Book = require('./models/activity');
 Before we check the connection,
 
 We need to use *express js* to set up the routes and assign a port to listen to.
-open up `app.js`.
+Open up `app.js`.
 
 Then add the following lines of code.
 
@@ -105,31 +111,33 @@ Next run `node app.js`
 
 Check to see if things are working by going to `http://localhost:3000`, in your web browser
 
-//image
-![alt text](http://url/to/img.png)
+
+![working](./img/working.png)
 
 ### Let us create a database
 
 If you don't have mongo installed,
 
 Follow this link
-[Here is a link](https://docs.mongodb.com/manual/installation/)
+[Click Me](https://docs.mongodb.com/manual/installation/)
 
 run mongo by typing `mongod` into a new terminal window
 
 Next open a separate terminal tab, and type `mongo`
 
 Enter the following scripts to create the database we will be using in this project
+*This will create a bookstore database*
 
 `use bookstore`
 
-This will create a bookstore database
+
+Next, enter
 
 `show dbs`
 
-Will confirm that the database `bookstore` was created
+The above will confirm that the database `bookstore` was created
 
-Now let us create a collection
+### Now let us create a collection
 
 Before we do, enter `;` to start a new command
 
@@ -138,7 +146,7 @@ Then type `db.createCollection("books")`
 Confirm it is created by typing, `db.getCollectionNames()`
 
 Which should return, `["books"]`
-
+---
 **Great**, now let us go to the next step, *connecting with mongoose*.
 
 Go back to your `app.js` file
@@ -158,7 +166,7 @@ app.get('/', function (req, res, next){...}
 
 ### Next go to your `activity.js` file,
 
- which is located in the models folder.
+ which is located in the `/models` folder.
 
 Add the following lines of code:
 
@@ -219,12 +227,12 @@ PATCH ./api/books can be used to modify a book
 
 DELETE ./api/books will delete a book title
 ```
-
+---
 Now let us create new CRUD routes that will go in the `app.js` file
 
 ### Express to the rescue
 
-After the,
+After the following lines of code,
 
 ```javascript
 app.get('/', function (req, res, next){
@@ -243,12 +251,12 @@ app.get('/api/books', function(req,res){
 })
 ```
 
-*app.get* will match and handle the HTTP route in this case `/api/books`
+`app.get`will match and handle the HTTP route in this case `/api/books`
 
 `Book` is the MongoDb model, that we created in `/models/activity.js`
 
 
-What about adding a book?
+#### What about adding a book?
 
 Copy and paste the following in your `app.js` file.
 
@@ -265,7 +273,7 @@ app.post('/api/books', function(req,res){
 })
 ```
 
-Let us try to get a book by its id
+#### Let us try to get a book by its id
 ```javascript
 //get - request a book by its id
 app.get('/api/books/:books_id', function(req, res){
@@ -278,7 +286,7 @@ app.get('/api/books/:books_id', function(req, res){
     })
 })
 ```
-
+#### Update
 It is also possible to update a book by its id using the mongodb function `findOneAndUpdate`
 
 ```javascript
@@ -313,7 +321,7 @@ app.delete('/api/books/:books_id', function(req, res){
 Let us use postman.
 Just in case, make sure mongo is running in a separate terminal `$ mongo`
 
-[Download Link](https://www.getpostman.com/apps)
+[Download Postman Link](https://www.getpostman.com/apps)
 
 Post Man Get
 ![alt text](./img/postman_get.png)
