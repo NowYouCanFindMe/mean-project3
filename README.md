@@ -1,6 +1,6 @@
 # Project 3
 
-### Whats we plan to accomplish
+### What we plan to accomplish
 In this project we will become familiar with:
 1. Mongo DB
 2. Node Js
@@ -328,3 +328,36 @@ Post Man Get
 
 Post Man Create
 ![alt text](./img/postman_create_a_book.png)
+
+### MongoDB Helpful Commands
+
+```
+show dbs - Show all databases
+use mydatabase - Create a database
+db.createCollection("user") - Create a users collection
+show collections - Show all collections in Database
+```
+Insert a new record into the collection `user`
+```
+db.user.insert({"name": "Mr. Waldo", "location": "Unknown", "username": "whereisWaldo"})
+
+```
+
+Insert many users
+
+```
+db.collection.insertMany([
+  {"name": "SpongeBob", "location": "Under Water", "username": "SquarePants"}),
+  {"name": "Jimmy Neutron", "location": "Retroville", "username": "heyJimmy"})
+  ])
+```
+Display a list of records
+
+```
+db.user.find()
+```
+
+Delete a Collection
+```
+db.user.drop()
+```
